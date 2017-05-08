@@ -44,19 +44,9 @@ var config = {
       return messaging.getToken();
   })
       .then(function(token) {
-    if (currentToken) {
-      sendTokenToServer(currentToken);
-      updateUIForPushEnabled(currentToken);
       console.log(token);
       $("#token").val(token);
-  }
-else {
-      // Show permission request.
-      console.log('No Instance ID token available. Request permission to generate one.');
-      // Show permission UI.
-      updateUIForPushPermissionRequired();
-      setTokenSentToServer(false);
-    })
+  })
       .catch(function (err) {
       console.log('Unable to get permission to notify.', err) })
       messaging.onMessage(function(payload ) {
@@ -93,8 +83,8 @@ else {
              var token = $("#token").val();
              var username = $("#userName").val();
              var password = $("#pwd").val();
-           // alert("ffffffffffffffffffffffff");
-            // window.location.href="incident.html";
+            alert("ffffffffffffffffffffffff");
+             window.location.href="incident.html";
           $.ajax({
                 type: "POST",
                 contentType:"application/json",
